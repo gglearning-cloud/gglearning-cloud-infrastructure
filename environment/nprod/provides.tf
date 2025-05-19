@@ -17,6 +17,7 @@ terraform {
 }
 
 # State Locking
+
 resource "aws_dynamodb_table" "tf_remote_state_locking" {
   hash_key = "LockID"
   name     = "terraform-s3-backend-locking"

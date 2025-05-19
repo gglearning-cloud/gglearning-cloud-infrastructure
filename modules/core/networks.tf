@@ -17,6 +17,7 @@ resource "aws_subnet" "public_subnets" {
     vpc_id = aws_vpc.vpc.id
     cidr_block = cidrsubnet(aws_vpc.vpc.cidr_block, 2, count.index)
     availability_zone = data.aws_availability_zones.azs.names[count.index]
+    map_public_ip_on_launch = true
     ipv6_cidr_block = aws_vpc.vpc.assign_generated_ipv6_cidr_block ? cidrsubnet(aws_vpc.vpc.ipv6_cidr_block, 4, count.index) : null
     assign_ipv6_address_on_creation = aws_vpc.vpc.assign_generated_ipv6_cidr_block ? true : false
 
